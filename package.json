@@ -1,0 +1,54 @@
+{
+  "name": "invidia",
+  "description": "Schema from (meta)data reverse engineering",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dotmpe/invidia",
+  "author": {
+    "name": "B. van Berkum",
+    "email": "dev@dotmpe.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dotmpe/invidia.git"
+  },
+  "bugs": {
+    "url": "httsp://github.com/dotmpe/invidia/issues"
+  },
+  "licenses": [
+    {
+      "type": "GPLv3",
+      "url": "https://github.com/dotmpe/invidia/blob/master/LICENSE-GPLv3"
+    }
+  ],
+  "main": "./index.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "bookshelf": "^0.7.5",
+    "chalk": "^0.4.0",
+    "commander": "^2.2.0",
+    "interpret": "^0.3.4",
+    "knex": "^0.6.19",
+    "sqlite3": "^2.2.3"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "~0.4.5",
+    "mocha": "~1.8.1",
+    "should": "~1.1.0",
+    "mocha-lcov-reporter": "~0.0.1",
+    "jscoverage": "~0.3.6",
+    "coveralls": "~2.0.7"
+  },
+  "keywords": [],
+  "scripts": {
+    "test": "grunt nodeunit",
+    "testmocha": "make test"
+  },
+  "bin": {
+    "invidia": "bin/invidia"
+  }
+}
