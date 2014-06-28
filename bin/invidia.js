@@ -5,5 +5,10 @@ var
 	invidia = require('../lib/')
 	;
 
-var config = invidia.initConfig();
-invidia.runMain(config);
+var config = invidia.initConfig(),
+	extensions = invidia.loadExtensions('ext')
+	;
+
+invidia
+	.runMain(config, extensions)
+	;

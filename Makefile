@@ -21,4 +21,9 @@ test-coveralls:
 	@./node_modules/.bin/jscoverage lib lib-cov
 	@ICOV=1 ./node_modules/.bin/mocha -R mocha-lcov-reporter | ./node_modules/.bin/coveralls
 
+loc:
+	find bin/ lib/ test/ -iname '*.js' -exec cat {} + | wc -l
+tree:
+	tree bin/ lib/ test/ doc/ tmp/
+
 .PHONY: test
