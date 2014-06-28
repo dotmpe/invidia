@@ -1,6 +1,6 @@
 # invidia
 
-> Schema from (meta)data reverse engineering
+> Schema from (meta)data reverse engineering; specification, validation.
 
 ---
 
@@ -13,13 +13,15 @@ $ npm install invidia -g
 ## Usage
 
 ```
-$ invidia
+$ invidia --scan
+$ invidia --update
+$ invidia --
 ```
 
 ## Release History
 _(Nothing yet)_
 
 ## License
-Copyright (c) 2014 B. van Berkum  
+Copyright (c) 2014 B. van Berkum
 Licensed under the GPLv3 license.
 
