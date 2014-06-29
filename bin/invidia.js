@@ -5,11 +5,15 @@ var
 	;
 
 /* Get promises for config and extensions */
-var config = invidialib.initConfig(),
-	extensions = invidialib.loadExtensions('ext')
-	;
-
-/* Defer to main */
-invidialib
-	.runMain(extensions, config)
-	;
+invidialib.initConfig()
+	.then(function(config) {
+		invidialib.loadExtensions('ext')
+			.then(function() {
+				/* Defer to main */
+				invidialib
+					.runMain(config)
+					.then(function() {
+						console.log(['end', arguments]);
+					});
+			});
+	});

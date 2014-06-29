@@ -26,10 +26,5 @@ loc:
 tree:
 	tree bin/ lib/ test/ doc/ tmp/
 
-make: NAME := 
-make: N ?= $(NAME)
-make:
-	@./node_modules/.bin/knex migrate:make $(N)
 
-
-.PHONY: test loc tree make
+.PHONY: test loc tree

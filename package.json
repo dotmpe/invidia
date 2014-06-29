@@ -51,9 +51,9 @@
   "scripts": {
     "test": "grunt nodeunit",
     "testmocha": "make test",
-    "dbversion": "./node_modules/.bin/knex --knexfile config/knex-migrate migrate:currentVersion",
-    "dbback": "./node_modules/.bin/knex migrate:rollback",
-    "dblatest": "./node_modules/.bin/knex migrate:latest"
+    "dbversion": "knex migrate:currentVersion",
+    "dbback": "knex migrate:rollback",
+    "dblatest": "knex migrate:latest"
   },
   "bin": {
     "invidia": "bin/invidia"

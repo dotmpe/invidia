@@ -18,11 +18,25 @@ module.exports =
 		elmexprs: (table) ->
 			table.uuid('id').primary()
 			table.enum('type', ['element', 'choice', 'zeroOrMore', 'group', 'optional'])
-			table.uuid('ops_expr').references('elmexprs')
-			table.uuid('ops_elm').references('elements')
+			table.uuid('ops_expr').references('id').inTable('elmexprs')
+			table.uuid('ops_elm').references('id').inTable('elements')
 		atrexprs: (table) ->
 			table.uuid('id').primary()
 			table.enum('type', ['attribute', 'choice', 'zeroOrMore', 'group', 'optional'])
-			table.uuid('ops_expr').references('atrexprs')
-			table.uuid('ops_atr').references('attributes')
+			table.uuid('ops_expr').references('id').inTable('atrexprs')
+			table.uuid('ops_atr').references('id').inTable('attributes')
+
+		fields: (table) ->
+			table.uuid('id').primary()
+			table.string('name')
+			table.uuid('module').references('id').inTable('modules')
+		modules: (table) ->
+			table.uuid('id').primary()
+			table.string('name')
+			table.string('path')
+			#table.string('list')
+		packages: (table) ->
+			table.uuid('id').primary()
+			table.string('name')
+
 

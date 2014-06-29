@@ -1,13 +1,8 @@
-# Update with your config settings.
+# XXX find some way to deal with this
 
 module.exports =
 
-  development:
-    client: 'sqlite3'
-    connection:
-      filename: './.invidia/dev.sqlite3'
-    migrations:
-      tableName: 'knex_migrations'
+  development: require('./.invidia/config').knex
 
   staging:
     client: 'postgresql'
