@@ -24,17 +24,20 @@ var pkg = require('../package.json');
 */
 
 exports['invidia'] = {
-  setUp: function(done) {
-    // setup here
-    done();
-  },
-  'test-1': function(test) {
-    test.expect(2);
-    // tests here
-    test.equal(invidia.version, pkg.verison);
-    test.throws(function() {
-    	invidia.scanDir('nosuchdir');
-	});
-    test.done();
-  },
+	setUp: function(done) {
+		// setup here
+		done();
+	},
+	'invidia-version': function(test) {
+		test.expect(1);
+		test.equal(invidia.version, pkg.version);
+		test.done();
+	},
+	'invidia-scanDir': function(test) {
+		test.expect(1);
+		test.throws(function() {
+			invidia.scanDir('nosuchdir');
+		});
+		test.done();
+	},
 };

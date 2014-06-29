@@ -5,10 +5,12 @@ var
 	invidia = require('../lib/')
 	;
 
+/* Get promises for config and extensions */
 var config = invidia.initConfig(),
 	extensions = invidia.loadExtensions('ext')
 	;
 
+/* Defer to main */
 invidia
-	.runMain(config, extensions)
+	.runMain(extensions, config)
 	;
