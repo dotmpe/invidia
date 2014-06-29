@@ -13,7 +13,7 @@ $ npm install invidia -g
 ## Usage
 
 ```
-$ invidia --scan
+$ invidia --scan sugarcrm
 $ invidia --update
 $ invidia --
 ```

@@ -1,16 +1,15 @@
 #!/usr/bin/env node
 
 var 
-	index = require('../'),
-	invidia = require('../lib/')
+	invidialib = require('../lib/')
 	;
 
 /* Get promises for config and extensions */
-var config = invidia.initConfig(),
-	extensions = invidia.loadExtensions('ext')
+var config = invidialib.initConfig(),
+	extensions = invidialib.loadExtensions('ext')
 	;
 
 /* Defer to main */
-invidia
+invidialib
 	.runMain(extensions, config)
 	;

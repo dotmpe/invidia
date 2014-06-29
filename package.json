@@ -26,13 +26,15 @@
   },
   "dependencies": {
     "bluebird": "^2.1.3",
-    "bookshelf": "^0.7.5",
+    "bookshelf": "latest",
     "chalk": "^0.4.0",
+    "coffee-script": "^1.7.1",
     "glob": "^4.0.2",
-    "knex": "^0.6.19",
+    "knex": "latest",
     "minimist": "^0.2.0",
     "path-extra": "^0.2.1",
-    "sqlite3": "^2.2.3"
+    "sqlite3": "^2.2.3",
+    "underscore": "^1.6.0"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
@@ -48,7 +50,10 @@
   "keywords": [],
   "scripts": {
     "test": "grunt nodeunit",
-    "testmocha": "make test"
+    "testmocha": "make test",
+    "dbversion": "./node_modules/.bin/knex --knexfile config/knex-migrate migrate:currentVersion",
+    "dbback": "./node_modules/.bin/knex migrate:rollback",
+    "dblatest": "./node_modules/.bin/knex migrate:latest"
   },
   "bin": {
     "invidia": "bin/invidia"
