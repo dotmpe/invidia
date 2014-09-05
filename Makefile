@@ -28,14 +28,16 @@ test-bin:
 	./bin/invidia.js --show-file sugarcrm/metadata/accounts_bugsMetaData.php
 
 %.rng: %.rnc
-	./rnc2rng $< > $@
+	./vendor/relaxng-gnosis.cx/rnc2rng $< > $@
 
 
-var/schema/addressbook.rng: var/schema/addressbook.rnc
-var/schema/sugar.rng: var/schema/sugar.rnc
+SRC_RNC := $(wildcard var/schema/*.rnc)
+TRGT_RNG := $(SRC_RNC:%.rnc=%.rng)
+
+conv-schema: $(TRGT_RNG)
 
 #test-schema: var/schema/addressbook.rng 
-test-schema: var/schema/sugar.rng
+test-schema: $(TRGT_RNG)
 	./bin/invidia.js --load-schema $<
 
 loc:

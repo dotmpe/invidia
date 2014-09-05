@@ -1,25 +1,27 @@
 start = document
 
+# for docs see
+# http://www.relaxng.org/compact-tutorial-20030326.htm
 
 document = element document {
-  element head {
-    title?
-    & link*
+# this headelement is an actual example in section 8
+  element head { 
+    title
     & script*
+    & link*
+    & meta*
   }
   & element body {
   }
 }
 
 title = element title { text }
-
+script = element script { text }
 link = element link {
-  id? 
-  type?
-  attribute rel { text }?
-  attribute href { text }?
-  attribute type { text }?
+  linkatr
 }
+meta = element meta { text }
+
 
 id = attribute id { text }
 type = attribute type { text }
@@ -27,7 +29,7 @@ name = attribute name { text }
 
 linkatr = (
   id? type? name? 
-  attribute href { text }
-  attribute rel { text }?
+  & attribute href { text }
+  & attribute rel { text }?
 )
 

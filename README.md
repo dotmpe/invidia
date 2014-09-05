@@ -2,7 +2,6 @@
 
 status: prototype
 
-http://www.gnosis.cx/download/relax/
 http://lxml.de/validation.html
 
 

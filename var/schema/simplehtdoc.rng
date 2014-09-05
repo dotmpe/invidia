@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <start><ref name="document"/></start>
+  <!-- for docs see -->
+  <!-- http://www.relaxng.org/compact-tutorial-20030326.htm -->
+  <define name="document">
+    <element name="document">
+      <interleave>
+        <!-- this headelement is an actual example in section 8 -->
+        <element name="head">
+          <interleave>
+            <ref name="title"/>
+            <ref name="script"/>
+            <ref name="link"/>
+            <ref name="meta"/>
+          </interleave>
+        </element>
+        <element name="body">
+
+        </element>
+      </interleave>
+    </element>
+  </define>
+  <define name="title">
+    <element name="title">
+      <text/>
+    </element>
+  </define>
+  <define name="script">
+    <element name="script">
+      <text/>
+    </element>
+  </define>
+  <define name="link">
+    <element name="link">
+      <ref name="linkatr"/>
+    </element>
+  </define>
+  <define name="meta">
+    <element name="meta">
+      <text/>
+    </element>
+  </define>
+  <define name="id">
+    <attribute name="id"/>
+  </define>
+  <define name="type">
+    <attribute name="type"/>
+  </define>
+  <define name="name">
+    <attribute name="name"/>
+  </define>
+  <define name="linkatr">
+    <interleave>
+      <ref name="id"/>
+      <ref name="type"/>
+      <ref name="name"/>
+      <attribute name="href"/>
+      <attribute name="rel"/>
+    </interleave>
+  </define>
+</grammar>
