@@ -31,6 +31,7 @@
     "coffee-script": "^1.7.1",
     "glob": "^4.0.2",
     "knex": "latest",
+    "minimatch": "^1.0.0",
     "minimist": "^0.2.0",
     "path-extra": "^0.2.1",
     "sqlite3": "^2.2.3",
@@ -51,6 +52,8 @@
   "scripts": {
     "test": "grunt nodeunit",
     "testmocha": "make test",
+    "srctree": "tree -I 'node_modules|build'",
+    "srcloc": "find bin lib migrations test -iname '*.php' -o -iname '*.js' -o -iname '*.coffee' -exec cat {} + | grep -v '^\\s*$' | wc -l",
     "dbversion": "knex migrate:currentVersion",
     "dbback": "knex migrate:rollback",
     "dblatest": "knex migrate:latest"

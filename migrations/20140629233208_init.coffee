@@ -1,13 +1,13 @@
 _ = require 'underscore'
 
-schema = require '../lib/schema'
+sql = require '../lib/sql'
 model = require '../lib/model'
 
 
 exports.up = (knex, Promise) ->
 	promises = []
 
-	_.each schema.tables, (callback, tableName) ->
+	_.each sql.tables, (callback, tableName) ->
 		promises.push(
 			knex.schema.createTable tableName, callback
 		)
@@ -18,7 +18,7 @@ exports.up = (knex, Promise) ->
 exports.down = (knex, Promise) ->
 	promises = []
 
-	_.each schema.tables, (callback, tableName) ->
+	_.each sql.tables, (callback, tableName) ->
 		promises.push(
 			knex.schema.dropTable tableName
 		)

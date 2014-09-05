@@ -1,6 +1,12 @@
 # invidia
 
+http://lxml.de/validation.html
+
+
 > Schema from (meta)data reverse engineering; specification, validation.
+
+- Experiment involving SugarCRM vardefs.
+- Analysis involving RelaxNG schema. See also amanda-mpe.
 
 ---
 

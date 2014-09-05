@@ -2,27 +2,43 @@ Looking at Relax NG and working out relational model.
 
 Schema
   - id
-  - roots
+  - name
+  - ns
+  - expr_id 
 
 Element
   - id
   - name
-  - list<ElementExpression> elements
-  - list<AttributeExpression> attributes
-  - dataType
+  - datatype_id
+  - expr_id
+  - schema_id
 
 Attribute
   - id
   - name
-  - dataType
+  - datatype_id
+  - schema_id
 
-ElementExpression
-  - FK element-id
-  - enum type [ element, choice, zeroOrMore, group, optional ]
-  - list<ElementExpression> ops1
-  - list<Element> ops2 
+Expressions
+  - id
+  - enum type [ element, attribute, group, choice, interleave, oneOrMore, zeroOrMore, optional ]
+  - expr_seq_id
+  - elm_id
+  - atr_id
+
+ExpressionSeq
+  - id
+  - seq:int
+  - expr_id
+
+
+Datatypes
+  - id
+  - type
+  - data_type_library
 
 Work in progress, some further ideas follow.
+
 
 Additionally, to manage this data spread across files and customizations:
 

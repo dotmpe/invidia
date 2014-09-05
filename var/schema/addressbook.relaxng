@@ -1,0 +1,9 @@
+# Example from tutorial
+# http://www.relaxng.org/compact-tutorial-20030326.html
+
+element addressBook {
+  element card {
+    element name { text },
+    element email { text }
+  }+
+}

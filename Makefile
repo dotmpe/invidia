@@ -9,6 +9,7 @@ test:
 	@echo TRAVIS_JOB_ID $(TRAVIS_JOB_ID)
 	@./node_modules/.bin/mocha -R spec
 	@make test-coveralls
+	@make test-bin
 
 coverage:
 	@rm -rf lib-cov
@@ -20,6 +21,11 @@ test-coveralls:
 	@rm -rf lib-cov
 	@./node_modules/.bin/jscoverage lib lib-cov
 	@ICOV=1 ./node_modules/.bin/mocha -R mocha-lcov-reporter | ./node_modules/.bin/coveralls
+
+test-bin:
+	./bin/invidia.js --show-file sugarcrm/modules/Bugs/vardefs.php
+	./bin/invidia.js --show-file sugarcrm/modules/Accounts/vardefs.php
+	./bin/invidia.js --show-file sugarcrm/metadata/accounts_bugsMetaData.php
 
 loc:
 	find bin/ lib/ test/ -iname '*.js' -exec cat {} + | wc -l
