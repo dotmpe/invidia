@@ -5,6 +5,8 @@ publish:
 	@git push origin ${version}
 	@npm publish
 
+test: test-schema
+
 test:
 	@echo TRAVIS_JOB_ID $(TRAVIS_JOB_ID)
 	@./node_modules/.bin/mocha -R spec
@@ -53,6 +55,7 @@ validate-examples::
 		rnv var/schema/$$type.rnc var/schema/example*.$$type.xml; \
 	done; \
 
+test-schema: conv-schema validate-schema validate-examples
 
 #test-schema: var/schema/addressbook.rng 
 

@@ -16,7 +16,7 @@
           </interleave>
         </element>
         <element name="body">
-
+          <text/>
         </element>
       </interleave>
     </element>

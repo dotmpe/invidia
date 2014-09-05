@@ -3,15 +3,15 @@
   <start><ref name="sugarmeta"/></start>
   <define name="sugarmeta">
     <element name="sugarmeta">
-      <choice>
+      <interleave>
         <ref name="dictionary"/>
         <ref name="viewdefs"/>
-      </choice>
+      </interleave>
     </element>
   </define>
   <define name="viewdefs">
     <element name="viewdefs">
-
+      <text/>
     </element>
   </define>
   <define name="dictionary">
@@ -26,21 +26,18 @@
   <define name="account">
     <element name="Account">
       <element name="fields">
-        <attribute name="id"/>
-        <attribute name="name"/>
-        <attribute name="description"/>
-        <attribute name="date_entered"/>
+        <text/>
       </element>
     </element>
   </define>
   <define name="contact">
     <element name="Contact">
-
+      <text/>
     </element>
   </define>
   <define name="lead">
     <element name="Lead">
-
+      <text/>
     </element>
   </define>
 </grammar>

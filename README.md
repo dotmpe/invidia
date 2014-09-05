@@ -11,6 +11,9 @@ http://lxml.de/validation.html
 - Experiment involving SugarCRM vardefs.
 - Analysis involving RelaxNG schema. See also amanda-mpe.
 
+TODO: store schema in SQL (doc/schema.rst)
+TODO: 
+
 ---
 
 ## Install

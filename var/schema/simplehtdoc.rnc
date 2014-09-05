@@ -29,9 +29,9 @@ type = attribute type { text }
 name = attribute name { text }
 
 linkatr = (
-  id? 
-  & type? 
-  & name? 
+  id?
+  & type?
+  & name?
   & attribute href { text }
   & attribute rel { text }?
 )
