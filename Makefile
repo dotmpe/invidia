@@ -27,10 +27,28 @@ test-bin:
 	./bin/invidia.js --show-file sugarcrm/modules/Accounts/vardefs.php
 	./bin/invidia.js --show-file sugarcrm/metadata/accounts_bugsMetaData.php
 
+%.rng: %.rnc
+	./rnc2rng $< > $@
+
+
+var/schema/addressbook.rng: var/schema/addressbook.rnc
+var/schema/sugar.rng: var/schema/sugar.rnc
+
+#test-schema: var/schema/addressbook.rng 
+test-schema: var/schema/sugar.rng
+	./bin/invidia.js --load-schema $<
+
 loc:
 	find bin/ lib/ test/ -iname '*.js' -exec cat {} + | wc -l
 tree:
 	tree bin/ lib/ test/ doc/ tmp/
 
+.invidia/dev.sqlite3: lib/sql.coffee
+	-[ -e $@ ] && rm $@
+	knex migrate:latest
+	@echo DB reset
+
+sql: .invidia/dev.sqlite3
+	sqlite3 .invidia/dev.sqlite3
 
 .PHONY: test loc tree

@@ -1,10 +1,14 @@
 # invidia
 
+status: prototype
+
+http://www.gnosis.cx/download/relax/
 http://lxml.de/validation.html
 
 
 > Schema from (meta)data reverse engineering; specification, validation.
 
+- Working to resove simple schema from JSON.
 - Experiment involving SugarCRM vardefs.
 - Analysis involving RelaxNG schema. See also amanda-mpe.
 

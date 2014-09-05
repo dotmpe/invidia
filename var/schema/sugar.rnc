@@ -1,0 +1,25 @@
+start = sugarmeta
+
+sugarmeta = element sugarmeta {
+	( dictionary | viewdefs )
+}
+
+viewdefs = element viewdefs {
+}
+dictionary = element dictionary {
+	( account | contact | lead )*
+}
+
+account = element Account {
+	element fields {
+		attribute id { text }
+		attribute name { text }
+		attribute description { text }
+		attribute date_entered { text }
+	}
+}
+
+contact = element Contact { }
+lead = element Lead { }
+
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Example from tutorial -->
+<!-- http://www.relaxng.org/compact-tutorial-20030326.html -->
+<element name="addressBook" xmlns="http://relaxng.org/ns/structure/1.0">
+  <oneOrMore>
+    <element name="card">
+        <element name="name">
+          <text/>
+        </element>
+        <element name="email">
+          <text/>
+        </element>
+    </element>
+  </oneOrMore>
+</element>

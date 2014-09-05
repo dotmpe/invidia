@@ -1,0 +1,33 @@
+start = document
+
+
+document = element document {
+  element head {
+    title?
+    & link*
+    & script*
+  }
+  & element body {
+  }
+}
+
+title = element title { text }
+
+link = element link {
+  id? 
+  type?
+  attribute rel { text }?
+  attribute href { text }?
+  attribute type { text }?
+}
+
+id = attribute id { text }
+type = attribute type { text }
+name = attribute name { text }
+
+linkatr = (
+  id? type? name? 
+  attribute href { text }
+  attribute rel { text }?
+)
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <start><ref name="sugarmeta"/></start>
+  <define name="sugarmeta">
+    <element name="sugarmeta">
+      <choice>
+        <ref name="dictionary"/>
+        <ref name="viewdefs"/>
+      </choice>
+    </element>
+  </define>
+  <define name="viewdefs">
+    <element name="viewdefs">
+
+    </element>
+  </define>
+  <define name="dictionary">
+    <element name="dictionary">
+      <choice>
+        <ref name="account"/>
+        <ref name="contact"/>
+        <ref name="lead"/>
+      </choice>
+    </element>
+  </define>
+  <define name="account">
+    <element name="Account">
+      <element name="fields">
+        <attribute name="id"/>
+        <attribute name="name"/>
+        <attribute name="description"/>
+        <attribute name="date_entered"/>
+      </element>
+    </element>
+  </define>
+  <define name="contact">
+    <element name="Contact">
+
+    </element>
+  </define>
+  <define name="lead">
+    <element name="Lead">
+
+    </element>
+  </define>
+</grammar>
