@@ -1,0 +1,10 @@
+<addressBook>
+	<card>
+		<name>Contact 2</name>
+		<email>contact2@example.net</email>
+	</card>
+	<card>
+		<name>Contact 2</name>
+		<email>contact1@example.net</email>
+	</card>
+</addressBook>

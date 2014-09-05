@@ -1,10 +1,11 @@
 start = sugarmeta
 
 sugarmeta = element sugarmeta {
-	( dictionary | viewdefs )
+	( dictionary & viewdefs )
 }
 
 viewdefs = element viewdefs {
+	text
 }
 dictionary = element dictionary {
 	( account | contact | lead )*
@@ -12,14 +13,11 @@ dictionary = element dictionary {
 
 account = element Account {
 	element fields {
-		attribute id { text }
-		attribute name { text }
-		attribute description { text }
-		attribute date_entered { text }
+		text
 	}
 }
 
-contact = element Contact { }
-lead = element Lead { }
+contact = element Contact { text }
+lead = element Lead { text }
 
 

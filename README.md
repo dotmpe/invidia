@@ -16,8 +16,13 @@ http://lxml.de/validation.html
 ## Install
 
 ```
-$ npm install invidia -g
+$ npm install invidia [-g]
 ```
+
+Likely not suited for global install yet.
+
+To run the tests, some other programs are needed.
+Ie. rnv. See Makefile.
 
 ## Usage
 
