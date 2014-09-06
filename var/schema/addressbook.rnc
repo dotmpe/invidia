@@ -30,6 +30,8 @@ address = (
 	) | postageId
 )
 
+### String datatype
+
 postageId = (
 			element zipcode { Text }
 			| element postalcode { xsd:string { minLength="6" maxLength="6"} }
