@@ -3,30 +3,38 @@
 
 start = element addressBook {
 	element card {
-		element name { text } & contactInfo+
+		element name { Text } & contactInfo+
 	}+
 }
 
 contactInfo = (
-		element email { text } 
-		| element telnr { text } 
+		element email { Text } 
+		| element telnr { Text } 
 		| address )
 
 address = (
 	(
 		(
 			element housenr { xsd:integer }?
-			& element street { text }
-			& element city { text }
-			& element state { text }?
-			& element country { text }
-			& element postalcode { text }?
+			& element street { Text }
+			& element city { Text }
+			& element state { Text }?
+			& element country { Text }
+			& postageId?
 		) | (
-			element city { text }?
-			& element state { text }?
-			& element country { text }
-			& element postalcode { text }?
+			element city { Text }?
+			& element state { Text }?
+			& element country { Text }
+			& postageId?
 		)
-	) | element postalcode { text }
+	) | postageId
 )
+
+postageId = (
+			element zipcode { Text }
+			| element postalcode { xsd:string { minLength="6" maxLength="6"} }
+			| element postalbin { Text }
+		)
+
+Text = xsd:string { minLength="2" }
 

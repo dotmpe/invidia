@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
     datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
-  <!-- Example from tutorial -->
+  <!-- Expanded on example from tutorial -->
   <!-- http://www.relaxng.org/compact-tutorial-20030326.html -->
   <start><ref name="element addressBook {"/></start>
   <oneOrMore>
@@ -35,47 +35,53 @@
             </element>
           </optional>
           <element name="street">
-            <text/>
+            <ref name="Text"/>
           </element>
           <element name="city">
-            <text/>
+            <ref name="Text"/>
           </element>
           <optional>
             <element name="state">
-              <text/>
+              <ref name="Text"/>
             </element>
           </optional>
           <element name="country">
-            <text/>
+            <ref name="Text"/>
           </element>
-          <optional>
-            <element name="postalcode">
-              <text/>
-            </element>
-          </optional>
+          <ref name="postageId"/>
         </interleave>
         <interleave>
           <optional>
             <element name="city">
-              <text/>
+              <ref name="Text"/>
             </element>
           </optional>
           <optional>
             <element name="state">
-              <text/>
+              <ref name="Text"/>
             </element>
           </optional>
           <element name="country">
-            <text/>
+            <ref name="Text"/>
           </element>
-          <optional>
-            <element name="postalcode">
-              <text/>
-            </element>
-          </optional>
+          <ref name="postageId"/>
         </interleave>
       </choice>
+      <ref name="postageId"/>
+    </choice>
+  </define>
+  <define name="Text">
+    <data type="string"/>
+  </define>
+  <define name="postageId">
+    <choice>
+      <element name="zipcode">
+        <text/>
+      </element>
       <element name="postalcode">
+        <data type="string"/>
+      </element>
+      <element name="postalbin">
         <text/>
       </element>
     </choice>
