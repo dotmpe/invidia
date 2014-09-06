@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start><ref name="dts"/></start>
+  <define name="dts">
+    <element name="dts">
+      <ref name="elements"/>
+    </element>
+  </define>
+  <define name="elements">
+    <interleave>
+      <element name="_string">
+        <data type="string"/>
+      </element>
+      <element name="boolean">
+
+      </element>
+      <element name="float">
+        <data type="float"/>
+      </element>
+      <element name="double">
+        <data type="double"/>
+      </element>
+      <element name="decimal">
+        <data type="decimal"/>
+      </element>
+      <optional>
+        <element name="dateTime">
+          <data type="dateTime"/>
+        </element>
+      </optional>
+      <optional>
+        <element name="duration">
+          <data type="duration"/>
+        </element>
+      </optional>
+      <optional>
+        <element name="hexBinary">
+          <data type="hexBinary"/>
+        </element>
+      </optional>
+      <optional>
+        <element name="base64Binary">
+          <data type="base64Binary"/>
+        </element>
+      </optional>
+      <oneOrMore>
+        <element name="anyURI">
+          <data type="anyURI"/>
+        </element>
+      </oneOrMore>
+      <element name="IDREF">
+        <data type="IDREF"/>
+      </element>
+      <element name="ID">
+        <data type="ID"/>
+      </element>
+    </interleave>
+  </define>
+</grammar>

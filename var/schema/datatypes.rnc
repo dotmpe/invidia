@@ -1,0 +1,21 @@
+start = dts
+
+dts = element dts {
+  elements
+}
+
+elements = (
+  element _string { xsd:string { minLength="1" } }
+  & element boolean { attribute test { xsd:boolean } }
+  & element float { xsd:float }
+  & element double { xsd:double }
+  & element decimal { xsd:decimal }
+  & element dateTime { xsd:dateTime }?
+  & element duration { xsd:duration }?
+  & element hexBinary { xsd:hexBinary }?
+  & element base64Binary { xsd:base64Binary }?
+  & element anyURI { xsd:anyURI }+
+  & element IDREF { xsd:IDREF }
+  & element ID { xsd:ID }
+)
+

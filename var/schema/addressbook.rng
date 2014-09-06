@@ -8,7 +8,7 @@
     <element name="card">
       <interleave>
         <element name="name">
-          <text/>
+          <ref name="Text"/>
         </element>
         <ref name="contactInfo"/>
       </interleave>
@@ -17,10 +17,10 @@
   <define name="contactInfo">
     <choice>
       <element name="email">
-        <text/>
+        <ref name="Text"/>
       </element>
       <element name="telnr">
-        <text/>
+        <ref name="Text"/>
       </element>
       <ref name="address"/>
     </choice>
@@ -69,21 +69,22 @@
       </choice>
       <ref name="postageId"/>
     </choice>
-  </define>
-  <define name="Text">
-    <data type="string"/>
+    <a:documentation> String datatype</a:documentation>
   </define>
   <define name="postageId">
     <choice>
       <element name="zipcode">
-        <text/>
+        <ref name="Text"/>
       </element>
       <element name="postalcode">
         <data type="string"/>
       </element>
       <element name="postalbin">
-        <text/>
+        <ref name="Text"/>
       </element>
     </choice>
+  </define>
+  <define name="Text">
+    <data type="string"/>
   </define>
 </grammar>

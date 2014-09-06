@@ -1,0 +1,53 @@
+<dts>
+  <!-- http://www.w3.org/2001/XMLSchema -->
+  <_string>String test</_string>
+  <boolean test="true" />
+  <float>0.124</float>
+  <double>0.1333333333333242342342342333324</double>
+  <decimal>0.124</decimal>
+  <!--
+  <dateTime>12467</dateTime>
+  <duration>1</duration>
+  <hexBinary></hexBinary>
+  <base64Binary></base64Binary>
+  -->
+  <anyURI>abc</anyURI>
+  <anyURI>_a:x</anyURI>
+  <anyURI>_a://path/foo?q#x</anyURI>
+  <ID>a</ID>
+  <IDREF>a</IDREF>
+  <!--
+<ENTITY> </ENTITY>
+<NOTATION> </NOTATION>
+<normalizedString> </normalizedString>
+<token></token>
+<language></language>
+<IDREFS></IDREFS>
+<ENTITIES></ENTITIES>
+<NMTOKEN>
+<NMTOKENS>
+<Name>
+<QName>
+<NCName>
+<integer>
+<nonNegativeInteger>
+<positiveInteger>
+<nonPositiveInteger>
+<negativeInteger>
+<byte>
+<int>
+<long>
+<short>
+<unsignedByte>
+<unsignedInt>
+<unsignedLong>
+<unsignedShort>
+<date>
+  <time>
+  <gYearMonth></gYearMonth>
+  <gYear></gYear>
+  <gMonthDay></gMonthDay>
+  <gDay></gDay>
+  <gMonth></gMonth>
+    -->
+</dts>
