@@ -5,8 +5,10 @@ dts = element dts {
 }
 
 elements = (
-  element _string { xsd:string { minLength="1" } }
+  element _string { xsd:string { minLength="1" maxLength="12" } }
+  # XXX somehow rnv doesnt pick up on attribute datatype
   & element boolean { attribute test { xsd:boolean } }
+  & element boolean2 { xsd:boolean }
   & element float { xsd:float }
   & element double { xsd:double }
   & element decimal { xsd:decimal }

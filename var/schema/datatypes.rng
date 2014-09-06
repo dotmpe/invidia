@@ -15,6 +15,9 @@
       <element name="boolean">
 
       </element>
+      <element name="boolean2">
+        <data type="boolean"/>
+      </element>
       <element name="float">
         <data type="float"/>
       </element>

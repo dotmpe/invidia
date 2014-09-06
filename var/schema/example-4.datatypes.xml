@@ -2,6 +2,7 @@
   <!-- http://www.w3.org/2001/XMLSchema -->
   <_string>String test</_string>
   <boolean test="true" />
+  <boolean2>false</boolean2>
   <float>0.124</float>
   <double>0.1333333333333242342342342333324</double>
   <decimal>0.124</decimal>
