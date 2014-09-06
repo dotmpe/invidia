@@ -29,6 +29,11 @@ test-bin::
 	./bin/invidia.js --show-file sugarcrm/modules/Accounts/vardefs.php
 	./bin/invidia.js --show-file sugarcrm/metadata/accounts_bugsMetaData.php
 
+todo.list::
+	grep -srI 'XXX\|FIXME\|TODO' ./ \
+		--exclude-dir vendor \
+		--exclude-dir node_modules \
+		--exclude-dir lib-cov > $@
 
 # convert RNC to RNG
 SRC_RNC := $(wildcard var/schema/*.rnc)
@@ -65,6 +70,7 @@ test-load:: $(TRGT_RNG)
 
 loc:
 	find bin/ lib/ test/ -iname '*.js' -exec cat {} + | wc -l
+
 tree:
 	tree bin/ lib/ test/ doc/ tmp/
 

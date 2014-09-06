@@ -11,6 +11,15 @@ So it can rely on RelaxNG for validating structure.
 TODO test rnv datatypes
 
 But for more generic use, another model is needed: cf. JSON schema/properties.
+With the given implementation, microformats are hard-ish
+Need to isolate each block, and then validate its content structure.
+No match-all solutions?
+
+Many grammars. No single way to manage them. Sub grammars. Simple vs. advanced check
+lists. Validation for particular purposes.
+RNV_ reports on ARX and RVP too.
+
+.. _RNV: http://www.davidashen.net/rnv.html
 
 --store-name
   Add name attributes, raising on conflicts.

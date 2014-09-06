@@ -7,6 +7,7 @@ sugarmeta = element sugarmeta {
 viewdefs = element viewdefs {
 	text
 }
+
 dictionary = element dictionary {
 	( account | contact | lead )*
 }

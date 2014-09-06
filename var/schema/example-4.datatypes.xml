@@ -1,4 +1,7 @@
 <dts>
+  <_text>text: Any data.</_text>
+  <!--
+  <literal>some literal string</literal> -->
   <!-- http://www.w3.org/2001/XMLSchema -->
   <_string>String test</_string>
   <boolean test="true" />

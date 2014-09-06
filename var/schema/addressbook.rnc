@@ -1,7 +1,9 @@
 # Expanded on example from tutorial
 # http://www.relaxng.org/compact-tutorial-20030326.html
 
-start = element addressBook {
+start = addressBook
+
+addressBook = element addressBook {
 	element card {
 		element name { Text } & contactInfo+
 	}+

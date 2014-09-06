@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
     datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!-- XXX have to be careful with rnv to keep comments at start of line -->
   <start><ref name="dts"/></start>
   <define name="dts">
     <element name="dts">
@@ -9,9 +10,15 @@
   </define>
   <define name="elements">
     <interleave>
+      <element name="_text">
+        <text/>
+      </element>
+      <!-- XXX cannot get literal string to work with rnv -->
+      <!-- & element literal { text { "some literal string" } } -->
       <element name="_string">
         <data type="string"/>
       </element>
+      <!-- XXX somehow rnv doesnt pick up on attribute datatype -->
       <element name="boolean">
 
       </element>

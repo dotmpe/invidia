@@ -3,17 +3,21 @@
     datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <!-- Expanded on example from tutorial -->
   <!-- http://www.relaxng.org/compact-tutorial-20030326.html -->
-  <start><ref name="element addressBook {"/></start>
-  <oneOrMore>
-    <element name="card">
-      <interleave>
-        <element name="name">
-          <ref name="Text"/>
+  <start><ref name="addressBook"/></start>
+  <define name="addressBook">
+    <element name="addressBook">
+      <oneOrMore>
+        <element name="card">
+          <interleave>
+            <element name="name">
+              <ref name="Text"/>
+            </element>
+            <ref name="contactInfo"/>
+          </interleave>
         </element>
-        <ref name="contactInfo"/>
-      </interleave>
+      </oneOrMore>
     </element>
-  </oneOrMore>
+  </define>
   <define name="contactInfo">
     <choice>
       <element name="email">

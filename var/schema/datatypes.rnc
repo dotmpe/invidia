@@ -1,3 +1,4 @@
+# XXX have to be careful with rnv to keep comments at start of line
 start = dts
 
 dts = element dts {
@@ -5,8 +6,11 @@ dts = element dts {
 }
 
 elements = (
-  element _string { xsd:string { minLength="1" maxLength="12" } }
-  # XXX somehow rnv doesnt pick up on attribute datatype
+  element _text { text }
+# XXX cannot get literal string to work with rnv
+# & element literal { text { "some literal string" } }
+  & element _string { xsd:string { minLength="1" maxLength="12" } }
+# XXX somehow rnv doesnt pick up on attribute datatype
   & element boolean { attribute test { xsd:boolean } }
   & element boolean2 { xsd:boolean }
   & element float { xsd:float }
