@@ -1,10 +1,42 @@
 <addressBook>
 	<card>
-		<name>Contact 2</name>
-		<email>contact2@example.net</email>
+		<name>Contact 1</name>
+		<email>contact1@example.net</email>
+		<country>Country</country>
+		<city>City</city>
+		<street>Street</street>
+		<housenr>1</housenr>
 	</card>
 	<card>
 		<name>Contact 2</name>
-		<email>contact1@example.net</email>
+		<email>contact2@example.net</email>
+		<postalcode>123ABC</postalcode>
+	</card>
+	<card>
+		<name>Contact 3</name>
+		<email>contact3@example.net</email>
+		<country>Country</country>
+		<state>State</state>
+		<city>City</city>
+		<street>Street</street>
+		<housenr>3</housenr>
+	</card>
+	<card>
+		<name>Contact 4</name>
+		<telnr>12345</telnr>
+	</card>
+	<card>
+		<name>Contact 5</name>
+		<country>Country</country>
+	</card>
+	<card>
+		<name>Contact 6</name>
+		<postalcode>Country</postalcode>
+	</card>
+	<card>
+		<name>Contact 7</name>
+		<country>Country</country>
+		<city>City</city>
+		<street>Street</street>
 	</card>
 </addressBook>

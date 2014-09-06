@@ -1,9 +1,32 @@
-# Example from tutorial
+# Expanded on example from tutorial
 # http://www.relaxng.org/compact-tutorial-20030326.html
 
-element addressBook {
-  element card {
-    element name { text },
-    element email { text }
-  }+
+start = element addressBook {
+	element card {
+		element name { text } & contactInfo+
+	}+
 }
+
+contactInfo = (
+		element email { text } 
+		| element telnr { text } 
+		| address )
+
+address = (
+	(
+		(
+			element housenr { xsd:integer }?
+			& element street { text }
+			& element city { text }
+			& element state { text }?
+			& element country { text }
+			& element postalcode { text }?
+		) | (
+			element city { text }?
+			& element state { text }?
+			& element country { text }
+			& element postalcode { text }?
+		)
+	) | element postalcode { text }
+)
+

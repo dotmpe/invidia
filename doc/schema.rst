@@ -1,10 +1,16 @@
 Using RelaxNG to describe nested obects, ie. dicts 'n lists ala JSON.
 
 Objects correspond to Elements.
-Each element name is the key inherited from the parent container. 
-Thus the root element has no name.
+Each element name is the key from the parent container. 
+The root element has no name.
 
 Each simple value is turned into an Attribute on the containing element.
+
+Because of XML, each Invidia grammar holds one root object.
+So it can rely on RelaxNG for validating structure.
+TODO test rnv datatypes
+
+But for more generic use, another model is needed: cf. JSON schema/properties.
 
 --store-name
   Add name attributes, raising on conflicts.

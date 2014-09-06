@@ -12,7 +12,7 @@ http://lxml.de/validation.html
 - Analysis involving RelaxNG schema. See also amanda-mpe.
 
 TODO: store schema in SQL (doc/schema.rst)
-TODO: 
+TODO: use datatypes for text validation
 
 ---
 
