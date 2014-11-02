@@ -29,6 +29,7 @@
     "bookshelf": "latest",
     "chalk": "^0.4.0",
     "coffee-script": "^1.7.1",
+    "docopt": "^0.4.0",
     "glob": "^4.0.2",
     "knex": "latest",
     "minimatch": "^1.0.0",

@@ -1,11 +1,12 @@
+default:
+	
 # XXX: This came with grunt-init-command, using Grunt for now
 version = `cat package.json | grep version | awk -F'"' '{print $$4}'`
+
 publish:
 	@git tag ${version}
 	@git push origin ${version}
 	@npm publish
-
-test: test-schema
 
 test:
 	@echo TRAVIS_JOB_ID $(TRAVIS_JOB_ID)
@@ -82,4 +83,4 @@ tree:
 sql: .invidia/dev.sqlite3
 	sqlite3 .invidia/dev.sqlite3
 
-.PHONY: test loc tree
+.PHONY: default publish test coverage test-coveralls test-bin test-load loc tree sql

@@ -11,10 +11,13 @@ Options: \
 ";
 
 var 
-	invidialib = require('../lib/'),
+	//docopt = require('docopt'),
 	chalk = require('chalk'),
+	invidialib = require('../lib/'),
 	version = require("../package.json").version
-	;
+;
+
+//docopt(usagel
 
 /* Get promises for config and extensions */
 invidialib.initConfig()
