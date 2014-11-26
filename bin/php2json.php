@@ -5,15 +5,19 @@ define('sugarEntry', 1);
 class VardefManager { public function createVardef() {} }
 
 function argv_err() {
-    exit("Two arguments required: PHP metadata filename and dictionary varname");
+    exit("Two arguments required: PHP metadata filename and variable name(s). ");
 }
-$dictname = $argv[2];
-if (empty($dictname) || empty($argv[1])) {
+$varspec = $argv[2];
+if (empty($varspec) || empty($argv[1])) {
     argv_err();
 }
 require $argv[1];
 
-// XXX requires PECL ext: yaml_emit( ${$dictname} );
+// XXX requires PECL ext: yaml_emit( ${$varspec} );
 
-echo json_encode( $$dictname );
+$r = array();
+foreach (explode(',', $varspec) as $spec) {
+    $r[$spec] = $$spec;
+}
+echo json_encode( $r );
 
