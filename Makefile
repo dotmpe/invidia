@@ -8,33 +8,43 @@ publish:
 	@git push origin ${version}
 	@npm publish
 
-test:
+test: test-unit test-bin
+
+# Run mocha unittests producing a visual report on console
+test-unit:
 	@echo TRAVIS_JOB_ID $(TRAVIS_JOB_ID)
 	@./node_modules/.bin/mocha -R spec
-	@make test-coveralls
-	@make test-bin
 
+# produde (generate/open) coverage report for mocha tests
 coverage:
 	@rm -rf lib-cov
 	@./node_modules/.bin/jscoverage lib lib-cov
 	@COVERAGE=1 ./node_modules/.bin/mocha -R html-cov > coverage.html 
 	@open coverage.html
 
+# XXX test all and pass to coveralls?
 test-coveralls:
 	@rm -rf lib-cov
 	@./node_modules/.bin/jscoverage lib lib-cov
 	@ICOV=1 ./node_modules/.bin/mocha -R mocha-lcov-reporter | ./node_modules/.bin/coveralls
 
+# check commands keep working
 test-bin::
-	./bin/invidia.js --show-file sugarcrm/modules/Bugs/vardefs.php
+	./bin/invidia.js --read-file sugarcrm/modules/Contacts/vardefs.php > test1.log
+	md5sum -c *.md5
+	./bin/invidia.js --show-file sugarcrm/modules/Contacts/vardefs.php
 	./bin/invidia.js --show-file sugarcrm/modules/Accounts/vardefs.php
-	./bin/invidia.js --show-file sugarcrm/metadata/accounts_bugsMetaData.php
+	./bin/invidia.js --show-file sugarcrm/metadata/accounts_contactsMetaData.php
 
+# Produce list of tagged lines/comments
 todo.list::
 	grep -srI 'XXX\|FIXME\|TODO' ./ \
 		--exclude-dir vendor \
 		--exclude-dir node_modules \
 		--exclude-dir lib-cov > $@
+
+
+### RelaxNG schema rules
 
 # convert RNC to RNG
 SRC_RNC := $(wildcard var/schema/*.rnc)
@@ -74,6 +84,10 @@ loc:
 
 tree:
 	tree bin/ lib/ test/ doc/ tmp/
+srctree:
+	tree -I node_modules
+srcdirs:
+	tree -d -I node_modules
 
 .invidia/dev.sqlite3: lib/sql.coffee
 	-[ -e $@ ] && rm $@

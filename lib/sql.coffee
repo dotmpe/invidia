@@ -2,6 +2,19 @@
 module.exports =
 	tables:
 
+		schema: (table) ->
+			table.uuid('unid').primary()
+			table.string('id')
+			table.string('name')
+
+		dict: (table) ->
+			table.uuid('unid').primary()
+			table.string('name')
+			table.string('properties')
+		arr: (table) ->
+			table.uuid('unid').primary()
+			table.string('name')
+
 		grammars: (table) ->
 			table.uuid('id').primary()
 			table.string('name')

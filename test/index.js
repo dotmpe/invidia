@@ -1,7 +1,7 @@
 require('should');
 var pkg = require('../package.json');
 var index = require('../');
-var lib = require('../lib');
+var lib = require('../lib-cov');
 
 describe('invidia', function() {
 	it('must have correct package metadata', function() {

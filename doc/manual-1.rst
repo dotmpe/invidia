@@ -1,12 +1,16 @@
 Configuration
 ______________
 
+Create initial DB for lib/model::
+
+  knex migrate:latest
+
 
 Manual config directory
 -----------------------
 
 - config is {./,~/,/etc/}{,.}invidia/config.js
-- but nothing used from config yet
+- but nothing used from config yet, except knex ORM
 
 
 Manual database
