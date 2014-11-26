@@ -32,10 +32,11 @@ test-coveralls:
 test-bin::
 	./bin/invidia.js --read-file sugarcrm/modules/Contacts/vardefs.php > test1.log
 	./bin/invidia.js --read-file sugarcrm/modules/Contacts/vardefs.php --path=dictionary/Contact/indices/6 > test2.log
-	md5sum -c *.md5
 	./bin/invidia.js --show-file sugarcrm/modules/Contacts/vardefs.php > test3.log
+	php ./bin/php2json.php test/testdata.php myDict,foo,* > test4.log
 	#./bin/invidia.js --show-file sugarcrm/modules/Accounts/vardefs.php
 	#./bin/invidia.js --show-file sugarcrm/metadata/accounts_contactsMetaData.php
+	md5sum -c *.md5
 
 # Produce list of tagged lines/comments
 todo.list::
