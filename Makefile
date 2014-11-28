@@ -36,6 +36,7 @@ test-bin::
 	php ./bin/php2json.php test/testdata.php myDict,foo,* > test4.log
 	#./bin/invidia.js --show-file sugarcrm/modules/Accounts/vardefs.php
 	#./bin/invidia.js --show-file sugarcrm/metadata/accounts_contactsMetaData.php
+	./bin/invidia.js --x-create-schema test --file test/testdata.php --path myDict/foo --map myDict/foo:amazing
 	md5sum -c *.md5
 
 # Produce list of tagged lines/comments
