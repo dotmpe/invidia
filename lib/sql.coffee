@@ -84,6 +84,9 @@ versions = [
 		datatype_libraries: (table) ->
 			table.uuid('id').primary()
 			table.string('href')
+
+	]
+
 ###
 		XXX: wnat to mov this to extension
 		packages: (table) ->
@@ -99,8 +102,6 @@ versions = [
 			table.string('name')
 			table.uuid('module').references('id').inTable('modules')
 ###
-
-]
 
 module.exports =
 	tables: versions[ -1 ]

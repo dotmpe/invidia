@@ -2,12 +2,18 @@
 
 module.exports =
 
-  development: require('./.invidia/config').knex
+  #development: require('./.invidia/config').knex
+  development:
+    client: 'sqlite3'
+    connection:
+      filename: './dev.sqlite3'
+    migrations:
+      tableName: 'knex_migrations'
 
   testing:
     client: 'sqlite3'
     connection:
-      filename: './testing.sqlite3'
+      filename: './test.sqlite3'
     migrations:
       tableName: 'knex_migrations'
 
