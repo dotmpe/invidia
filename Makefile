@@ -33,10 +33,10 @@ update:
 # XXX: This came with grunt-init-command, using Grunt for now
 version = `cat package.json | grep version | awk -F'"' '{print $$4}'`
 
-test: lint test-unit test-bin
-
 lint:
 	@grunt lint
+
+test: test-unit test-bin
 
 test-unit:
 	@grunt test

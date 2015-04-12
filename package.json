@@ -56,7 +56,7 @@
   },
   "keywords": [],
   "scripts": {
-    "test": "grunt nodeunit",
+    "test": "grunt test",
     "testmocha": "make test",
     "srctree": "tree -I 'node_modules|build'",
     "srcloc": "find bin lib migrations test -iname '*.php' -o -iname '*.js' -o -iname '*.coffee' -exec cat {} + | grep -v '^\\s*$' | wc -l",
