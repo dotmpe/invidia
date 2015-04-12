@@ -18,7 +18,7 @@ empty :=
 space := $(empty) $(empty)
 default:
 	@echo 'usage:'
-	@echo '# npm [start|test|run build]'
+	@echo '# npm [test]'
 	@echo '# grunt [lint|..]'
 	@echo '# make [$(subst $(space),|,$(STRGTS))]'
 
@@ -83,18 +83,9 @@ test-json:
 
 
 
-VERSION :=
-
-publish: DRY := yes
-publish:
-	@git tag ${version}
-	@git push origin ${version}
-	@npm publish
-
 info:
 	npm run srctree
 	npm run srcloc
-
 
 build: todo.list
 
@@ -158,4 +149,17 @@ srcdirs:
 
 sql: .invidia/dev.sqlite3
 	sqlite3 .invidia/dev.sqlite3
+
+
+VERSION :=
+
+publish:
+	@[ -z "$(VERSION)" ] && { \
+		echo "Specify VERSION"; exit 1; \
+	} || echo Publishing $(VERSION)
+	grep version..$(VERSION) ReadMe.rst
+	@./check.coffee $(VERSION)
+	grep '^$(VERSION)' Changelog.rst
+	git push
+
 

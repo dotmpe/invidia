@@ -11,9 +11,9 @@ main = ( argv ) ->
 
   console.log "Testing for", version
 
-  libsf = require './lib/sitefile'
-  if libsf.version != version
-    throw new Error "Version mismatch in lib sitefile: #{libsf.version}"
+  lib = require './lib/'
+  if lib.version != version
+    throw new Error "Version mismatch in lib: #{lib.version}"
 
   pkg = require './package.json'
   if pkg.version != version
@@ -22,10 +22,6 @@ main = ( argv ) ->
   bwr = require './package.json'
   if bwr.version != version
     throw new Error "Version mismatch in bower.json: #{bwr.version}"
-
-  stf = yaml.safeLoad fs.readFileSync './Sitefile.yaml'
-  if stf.sitefile != version
-    throw new Error "Version mismatch in Sitefile.yaml: #{stf.sitefile}"
 
   0
 
