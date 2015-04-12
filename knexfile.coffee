@@ -4,7 +4,12 @@ module.exports =
 
   development: require('./.invidia/config').knex
 
-  test: require('./.invidia/config').knex_test
+  testing:
+    client: 'sqlite3'
+    connection:
+      filename: './testing.sqlite3'
+    migrations:
+      tableName: 'knex_migrations'
 
   staging:
     client: 'postgresql'
