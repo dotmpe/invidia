@@ -1,19 +1,45 @@
+# special rule targets
+STRGTS := \
+   default \
+   lint \
+   test \
+   test-unit coverage test-bin test-json \
+   validate-examples \
+   test-schema test-load \
+   loc tree srctree srcdirs \
+   sql \
+   install \
+   update \
+   publish
+
+.PHONY: $(STRGTS)
+
+empty :=
+space := $(empty) $(empty)
 default:
-	
+	@echo 'usage:'
+	@echo '# npm [start|test|run build]'
+	@echo '# grunt [lint|..]'
+	@echo '# make [$(subst $(space),|,$(STRGTS))]'
+
+install:
+	npm install
+	make test
+
+update:
+	npm update
+	bower update
+
 # XXX: This came with grunt-init-command, using Grunt for now
 version = `cat package.json | grep version | awk -F'"' '{print $$4}'`
 
-publish:
-	@git tag ${version}
-	@git push origin ${version}
-	@npm publish
+test: lint test-unit test-bin
 
-test: test-unit test-bin
+lint:
+	@grunt lint
 
-# Run mocha unittests producing a visual report on console
 test-unit:
-	@echo TRAVIS_JOB_ID $(TRAVIS_JOB_ID)
-	@./node_modules/.bin/mocha -R spec
+	@grunt test
 
 # produde (generate/open) coverage report for mocha tests
 coverage:
@@ -38,6 +64,39 @@ test-bin::
 	#./bin/invidia.js --show-file sugarcrm/metadata/accounts_contactsMetaData.php
 	./bin/invidia.js --x-create-schema test --file test/testdata.php --path myDict/foo --map myDict/foo:amazing
 	md5sum -c *.md5
+
+test-json:
+	# Test using jsonschema (Python)
+	# Test is sidecar.json is valid JSON schema
+	yaml2json var/schema/sidecar.yaml > var/schema/sidecar.json
+	-jsonschema -i var/schema/sidecar.json var/schema/draft-04.json
+	# Test if sidecar example complies with sidecar schema
+	yaml2json var/data/sidecar.yaml > var/data/sidecar.json
+	-jsonschema -i var/data/sidecar.json var/schema/sidecar.json
+	# Test sugarcrm schema/data
+	yaml2json var/schema/sugarcrm.yaml > var/schema/sugarcrm.json
+	-jsonschema -i var/schema/sugarcrm.json var/schema/draft-04.json
+	yaml2json var/data/sugarcrm.yaml > var/data/sugarcrm.json
+	-jsonschema -i var/data/sugarcrm.json var/schema/sugarcrm.json
+	# Test using TV4
+	-coffee var/schema/test.coffee
+
+
+
+VERSION :=
+
+publish: DRY := yes
+publish:
+	@git tag ${version}
+	@git push origin ${version}
+	@npm publish
+
+info:
+	npm run srctree
+	npm run srcloc
+
+
+build: todo.list
 
 # Produce list of tagged lines/comments
 todo.list::
@@ -100,4 +159,3 @@ srcdirs:
 sql: .invidia/dev.sqlite3
 	sqlite3 .invidia/dev.sqlite3
 
-.PHONY: default publish test coverage test-coveralls test-bin test-load loc tree sql

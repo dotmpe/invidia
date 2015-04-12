@@ -1,0 +1,8 @@
+id:
+$schema:
+title: 'A JSON schema for client panes'
+description: ''
+type: 'object'
+oneOf:
+- $ref: '#/def/components'
+

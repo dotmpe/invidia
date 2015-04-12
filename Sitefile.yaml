@@ -1,0 +1,7 @@
+sitefile: 0.0.2
+routes:
+    $_1: 'du:doc/**/*.rst'
+    $_2: 'du:*.rst'
+    '': redir:ReadMe
+params:
+    rst2html: []

@@ -1,8 +1,6 @@
 'use strict';
 
-var invidia = require('../lib/');
-var context = require('../lib/context');
-var pkg = require('../package.json');
+var Context = require('../lib/context');
 
 exports['invidia.context'] = {
 	setUp: function(done) {
@@ -10,7 +8,7 @@ exports['invidia.context'] = {
 	},
 	'context-1': function(test) {
 		test.expect(5);
-		var ctx = new context.Context({ x: 1, y: 1});
+		var ctx = new Context({ x: 1, y: 1});
 		test.equal(String(ctx), "Context:/1");
 		test.equal(ctx.x, 1);
 		var sub = ctx.getSub({ y: 2 });

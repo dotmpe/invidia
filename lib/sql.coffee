@@ -1,7 +1,21 @@
 # Invidia model SQL Schema for Knex
-module.exports =
-	tables:
 
+versions = [
+		schema: (table) ->
+			table.uuid('unid').primary()
+			table.string('id')
+			table.string('name')
+		grammars: (table) ->
+			table.uuid('unid').primary()
+			table.string('name')
+			table.string('ns')
+		elements: (table) ->
+			table.uuid('unid').primary()
+			table.string('name')
+		attributes: (table) ->
+			table.uuid('id').primary()
+			table.string('name')
+	,
 		schema: (table) ->
 			table.uuid('unid').primary()
 			table.string('id')
@@ -85,4 +99,9 @@ module.exports =
 			table.string('name')
 			table.uuid('module').references('id').inTable('modules')
 ###
+
+]
+
+module.exports =
+	tables: versions[ -1 ]
 

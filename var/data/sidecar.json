@@ -1,0 +1,1 @@
+{"last_state": {"id": "x"}, "type": "test", "name": "test-name", "components": [{"layout": "sub1"}, {"layout": {"last_state": {"id": "test-persist"}, "type": "sub", "name": "sub", "components": [{"layout": "layout-name"}, {"view": "view-name"}, {"view": {"showOn": "edit", "name": "anotherview"}}]}}]}

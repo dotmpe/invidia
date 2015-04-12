@@ -11,6 +11,11 @@
   "unused": true,
   "boss": true,
   "eqnull": true,
-  "node": true
+  "node": true,
+  "predef": [
+    "requirejs",
+    "define",
+    "describe", "it", "before", "after"
+  ]
 }
-
+// vim:ft=javascript:

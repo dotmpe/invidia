@@ -1,0 +1,20 @@
+# An fictious piece of sidecar metadata to excersize JSON schema/val.
+type: test
+name: test-name
+last_state:
+  id: 'x'
+components:
+- layout: sub1
+- layout:
+    type: sub
+    name: sub
+    components:
+    - layout: layout-name
+    - view: view-name
+    - view:
+        name: anotherview
+        showOn: edit
+    last_state:
+      id: test-persist
+      #x: 2
+

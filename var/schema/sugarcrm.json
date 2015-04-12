@@ -1,0 +1,1 @@
+{"additionalProperties": false, "$schema": "http://json-schema.org/draft-04/schema#", "type": "object", "properties": {"viewdefs": {"type": "object", "name": "viewdefs", "properties": {}}, "dictionary": {"type": "object", "name": "dictionary", "properties": {}}}}

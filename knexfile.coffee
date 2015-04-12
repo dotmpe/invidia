@@ -4,6 +4,8 @@ module.exports =
 
   development: require('./.invidia/config').knex
 
+  test: require('./.invidia/config').knex_test
+
   staging:
     client: 'postgresql'
     connection:

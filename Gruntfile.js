@@ -2,11 +2,10 @@
 
 module.exports = function(grunt) {
 
-  // Project configuration.
   grunt.initConfig({
-    nodeunit: {
-      files: ['test/**/*_test.js'],
-    },
+
+    pkg: grunt.file.readJSON('package.json'),
+
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -15,35 +14,84 @@ module.exports = function(grunt) {
         src: 'Gruntfile.js'
       },
       lib: {
-        src: ['lib/**/*.js']
+        src: [
+          'lib/**/*.js',
+        ]
       },
       test: {
-      	// TODO make it ignore mocha tests
-        src: ['test/**/*.js']
+        src: [ 'test/**/*.js' ]
       },
     },
+
+    coffeelint: {
+      options: {
+        configFile: '.coffeelint.json'
+      },
+      app: [
+        'migrations/**/*.coffee',
+        'var/**/*.coffee',
+        'lib/**/*.coffee',
+        '*.coffee'
+      ]
+    },
+
+    yamllint: {
+      all: {
+        src: [
+          'Sitefile.yaml',
+          'config/*.yaml',
+          'src/**/*.meta'
+        ]
+      }
+    },
+
+    nodeunit: {
+      files: [
+        'test/**/*_test.js'
+      ],
+    },
+
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
       },
       lib: {
-        files: '<%= jshint.lib.src %>',
-        tasks: ['jshint:lib', 'nodeunit']
+        files: [
+          '<%= jshint.lib.src %>',
+        ],
+        tasks: [
+          'jshint:lib',
+          'nodeunit'
+        ]
       },
       test: {
         files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'nodeunit']
+        tasks: [
+          'jshint:test',
+          'nodeunit'
+        ]
       },
     },
+
   });
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  // auto load grunt contrib tasks from package.json
+  require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('test', ['nodeunit']);
-  grunt.registerTask('default', ['jshint', 'nodeunit']);
+  grunt.registerTask('lint', [
+    'jshint',
+    'yamllint'
+  ]);
+
+  grunt.registerTask('test', [
+    'nodeunit'
+  ]);
+
+  // Default task.
+  grunt.registerTask('default', [
+    'lint',
+    'test'
+  ]);
 
 };
