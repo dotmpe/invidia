@@ -69,7 +69,11 @@ test-bin::
 	@echo [make $@] Starting..
 	rm .invidia/test.sqlite3
 	knex migrate:latest --env testing
-	NODE_ENV=$(ENV) ./bin/invidia.js --read-file sugarcrm/modules/Contacts/vardefs.php > test1.log
+	echo > test-read-file.out; \
+	for testpath in sugarcrm/modules/*/vardefs.php sugarcrm/metadata/*.php; do \
+		test -r $$testpath && \
+			NODE_ENV=$(ENV) ./bin/invidia.js --read-file $$testpath >> test-read-file.out; \
+	done
 	NODE_ENV=$(ENV) ./bin/invidia.js --read-file sugarcrm/modules/Contacts/vardefs.php --path=dictionary/Contact/indices/6 > test2.log
 	#NODE_ENV=$(ENV) ./bin/invidia.js --show-file sugarcrm/modules/Contacts/vardefs.php > test3.log
 	php ./bin/php2json.php test/testdata.php myDict,foo,* > test4.log
