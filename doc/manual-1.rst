@@ -3,7 +3,7 @@ ______________
 
 Create initial DB for lib/model::
 
-  knex migrate:latest
+  knex migrate:latest [--env (development|testing)]
 
 
 Manual config directory

@@ -2,20 +2,8 @@
 
 module.exports =
 
-  #development: require('./.invidia/config').knex
-  development:
-    client: 'sqlite3'
-    connection:
-      filename: './dev.sqlite3'
-    migrations:
-      tableName: 'knex_migrations'
-
-  testing:
-    client: 'sqlite3'
-    connection:
-      filename: './test.sqlite3'
-    migrations:
-      tableName: 'knex_migrations'
+  development: require('./.invidia/config').development
+  testing: require('./.invidia/config').testing
 
   staging:
     client: 'postgresql'
@@ -40,3 +28,4 @@ module.exports =
       max: 10
     migrations:
       tableName: 'knex_migrations'
+

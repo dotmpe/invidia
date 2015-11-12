@@ -39,7 +39,7 @@ lint:
 test: test-unit test-bin
 
 test-unit:
-	@grunt test
+	@NODE_ENV=testing grunt test
 
 # produde (generate/open) coverage report for mocha tests
 coverage:
@@ -55,14 +55,15 @@ test-coveralls:
 	@ICOV=1 ./node_modules/.bin/mocha -R mocha-lcov-reporter | ./node_modules/.bin/coveralls
 
 # check commands keep working
+test-bin:: ENV=testing
 test-bin::
-	./bin/invidia.js --read-file sugarcrm/modules/Contacts/vardefs.php > test1.log
-	./bin/invidia.js --read-file sugarcrm/modules/Contacts/vardefs.php --path=dictionary/Contact/indices/6 > test2.log
-	./bin/invidia.js --show-file sugarcrm/modules/Contacts/vardefs.php > test3.log
+	NODE_ENV=$(ENV) ./bin/invidia.js --read-file sugarcrm/modules/Contacts/vardefs.php > test1.log
+	NODE_ENV=$(ENV) ./bin/invidia.js --read-file sugarcrm/modules/Contacts/vardefs.php --path=dictionary/Contact/indices/6 > test2.log
+	NODE_ENV=$(ENV) ./bin/invidia.js --show-file sugarcrm/modules/Contacts/vardefs.php > test3.log
 	php ./bin/php2json.php test/testdata.php myDict,foo,* > test4.log
 	#./bin/invidia.js --show-file sugarcrm/modules/Accounts/vardefs.php
 	#./bin/invidia.js --show-file sugarcrm/metadata/accounts_contactsMetaData.php
-	./bin/invidia.js --x-create-schema test --file test/testdata.php --path myDict/foo --map myDict/foo:amazing
+	NODE_ENV=$(ENV) ./bin/invidia.js --x-create-schema test --file test/testdata.php --path myDict/foo --map myDict/foo:amazing
 	md5sum -c *.md5
 
 test-json:
