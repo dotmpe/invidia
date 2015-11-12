@@ -34,39 +34,53 @@ update:
 version = `cat package.json | grep version | awk -F'"' '{print $$4}'`
 
 lint:
+	@echo [make $@] Starting..
 	@grunt lint
+	@echo [make $@] Done.
 
 test: test-unit test-bin
+	@echo [make test] Done.
 
 test-unit:
+	@echo [make $@] Starting..
 	@NODE_ENV=testing grunt test
+	@echo [make $@] Done.
 
 # produde (generate/open) coverage report for mocha tests
 coverage:
+	@echo [make $@] Starting..
 	@rm -rf lib-cov
 	@./node_modules/.bin/jscoverage lib lib-cov
 	@COVERAGE=1 ./node_modules/.bin/mocha -R html-cov > coverage.html 
 	@open coverage.html
+	@echo [make $@] Done.
 
 # XXX test all and pass to coveralls?
 test-coveralls:
+	@echo [make $@] Starting..
 	@rm -rf lib-cov
 	@./node_modules/.bin/jscoverage lib lib-cov
 	@ICOV=1 ./node_modules/.bin/mocha -R mocha-lcov-reporter | ./node_modules/.bin/coveralls
+	@echo [make $@] Done.
 
 # check commands keep working
 test-bin:: ENV=testing
 test-bin::
+	@echo [make $@] Starting..
+	rm .invidia/test.sqlite3
+	knex migrate:latest --env testing
 	NODE_ENV=$(ENV) ./bin/invidia.js --read-file sugarcrm/modules/Contacts/vardefs.php > test1.log
 	NODE_ENV=$(ENV) ./bin/invidia.js --read-file sugarcrm/modules/Contacts/vardefs.php --path=dictionary/Contact/indices/6 > test2.log
-	NODE_ENV=$(ENV) ./bin/invidia.js --show-file sugarcrm/modules/Contacts/vardefs.php > test3.log
+	#NODE_ENV=$(ENV) ./bin/invidia.js --show-file sugarcrm/modules/Contacts/vardefs.php > test3.log
 	php ./bin/php2json.php test/testdata.php myDict,foo,* > test4.log
 	#./bin/invidia.js --show-file sugarcrm/modules/Accounts/vardefs.php
 	#./bin/invidia.js --show-file sugarcrm/metadata/accounts_contactsMetaData.php
 	NODE_ENV=$(ENV) ./bin/invidia.js --x-create-schema test --file test/testdata.php --path myDict/foo --map myDict/foo:amazing
-	md5sum -c *.md5
+	-md5sum -c *.md5
+	@echo [make $@] Done.
 
 test-json:
+	@echo [make $@] Starting..
 	# Test using jsonschema (Python)
 	# Test is sidecar.json is valid JSON schema
 	yaml2json var/schema/sidecar.yaml > var/schema/sidecar.json
@@ -81,7 +95,7 @@ test-json:
 	-jsonschema -i var/data/sugarcrm.json var/schema/sugarcrm.json
 	# Test using TV4
 	-coffee var/schema/test.coffee
-
+	@echo [make $@] Done.
 
 
 info:
@@ -89,6 +103,7 @@ info:
 	npm run srcloc
 
 build: todo.list
+	@echo [make $@] Done.
 
 # Produce list of tagged lines/comments
 todo.list::

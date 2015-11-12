@@ -2,9 +2,10 @@
 
 var
 	config = require('../.invidia/config.js'),
-	knex = require('knex')(config.knex_test),
+	envname = process.env.NODE_ENV,
+	knex = require('knex')(config.knex[envname]),
 	bookshelf = require('bookshelf')(knex),
-	invidia_model = require('../lib/model.js')
+	modelFactory = require('../lib/model.js')
 ;
 
 /*

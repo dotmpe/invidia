@@ -8,6 +8,7 @@ exports.up = (knex, Promise) ->
 	promises = []
 
 	_.each sql.tables, (callback, tableName) ->
+		console.log 'creating', tableName
 		promises.push(
 			knex.schema.createTable tableName, callback
 		)

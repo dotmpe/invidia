@@ -1,33 +1,36 @@
 # Invidia model SQL Schema for Knex
 
+unid_spec = ( table ) ->
+		table.uuid('unid').primary()
+
+unid_name_spec = ( table ) ->
+		unid_spec( table )
+		table.string('name')
+
 versions = [
+
 		schema: (table) ->
-			table.uuid('unid').primary()
+			unid_name_spec( table)
 			table.string('id')
-			table.string('name')
 		grammars: (table) ->
-			table.uuid('unid').primary()
-			table.string('name')
+			unid_name_spec( table)
 			table.string('ns')
 		elements: (table) ->
-			table.uuid('unid').primary()
-			table.string('name')
+			unid_name_spec( table)
 		attributes: (table) ->
-			table.uuid('id').primary()
-			table.string('name')
+			unid_name_spec( table)
+
 	,
+
 		schema: (table) ->
-			table.uuid('unid').primary()
+			unid_name_spec( table)
 			table.string('id')
-			table.string('name')
 
 		dict: (table) ->
-			table.uuid('unid').primary()
-			table.string('name')
+			unid_name_spec( table)
 			table.string('properties')
 		arr: (table) ->
-			table.uuid('unid').primary()
-			table.string('name')
+			unid_name_spec( table)
 
 		grammars: (table) ->
 			table.uuid('id').primary()
@@ -85,24 +88,30 @@ versions = [
 			table.uuid('id').primary()
 			table.string('href')
 
-	]
 
-###
-		XXX: wnat to mov this to extension
+# XXX: wnat to mov this to extension
 		packages: (table) ->
-			table.uuid('id').primary()
-			table.string('name')
+			unid_name_spec( table )
+
 		modules: (table) ->
-			table.uuid('id').primary()
-			table.string('name')
+			unid_name_spec( table )
 			table.string('path')
 			#table.string('list')
+
+		beans: (table) ->
+			unid_name_spec( table )
+
+		relations: (table) ->
+			unid_name_spec( table )
+
 		fields: (table) ->
-			table.uuid('id').primary()
-			table.string('name')
-			table.uuid('module').references('id').inTable('modules')
-###
+			unid_name_spec( table )
+			table.string('dataType')
+			# XXX table.uuid('module').references('id').inTable('modules')
+
+	]
+
 
 module.exports =
-	tables: versions[ -1 ]
+	tables: versions[ 1 ]
 

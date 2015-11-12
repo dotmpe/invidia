@@ -2,8 +2,9 @@
 
 module.exports =
 
-  development: require('./.invidia/config').development
-  testing: require('./.invidia/config').testing
+  development: require('./.invidia/config').knex.development
+
+  testing: require('./.invidia/config').knex.testing
 
   staging:
     client: 'postgresql'
@@ -28,4 +29,6 @@ module.exports =
       max: 10
     migrations:
       tableName: 'knex_migrations'
+
+
 
