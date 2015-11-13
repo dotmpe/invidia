@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 
     exec: {
       default_config: {
-        cmd: 'test -e .invidia/config.js || { mkdir .invidia; cp config.example.js .invidia/config.js; }'
+        cmd: 'test -e .invidia/config.js && echo "Config exists: .invidia/config.js" || { mkdir .invidia; cp config.example.js .invidia/config.js; }'
       }
     },
 
