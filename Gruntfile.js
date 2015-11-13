@@ -6,6 +6,12 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
+    exec: {
+      default_config: {
+        cmd: 'test -e .invidia/config.js || { mkdir .invidia; cp config.example.js .invidia/config.js; }'
+      }
+    },
+
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -83,6 +89,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('test', [
+    'exec:default_config',
     'nodeunit'
   ]);
 

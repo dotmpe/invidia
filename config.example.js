@@ -1,7 +1,4 @@
-module.exports = {
-	invidia: "0.0.0",
-	newConfig: false,
-	knex: {
+var testdb = {
 		client: 'sqlite3',
 		connection: {
 			filename: './.invidia/dev.sqlite3'
@@ -9,5 +6,11 @@ module.exports = {
 		migrations: {
 			tableName: 'knex_migrations'
 		}
+	};
+module.exports = {
+	invidia: "0.0.0",
+	newConfig: false,
+	knex: {
+		testing: testdb
 	}
 }
