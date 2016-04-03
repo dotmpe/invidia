@@ -80,7 +80,7 @@ test-bin::
 	#./bin/invidia.js --show-file sugarcrm/modules/Accounts/vardefs.php
 	#./bin/invidia.js --show-file sugarcrm/metadata/accounts_contactsMetaData.php
 	NODE_ENV=$(ENV) ./bin/invidia.js --x-create-schema test --file test/testdata.php --path myDict/foo --map myDict/foo:amazing
-	-md5sum -c *.md5
+	md5sum -c *.md5
 	@echo [make $@] Done.
 
 test-json:
