@@ -1,6 +1,6 @@
 require('should');
 var pkg = require('../package.json');
-var index = require('../');
+//var index = require('../');
 var lib = require('../lib-cov');
 
 describe('invidia', function() {

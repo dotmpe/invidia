@@ -1,2 +1,5 @@
 ReadMe.rst
-packagge.json
+
+package.json
+package.yaml
+install-dependencies.sh

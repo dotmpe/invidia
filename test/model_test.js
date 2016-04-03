@@ -1,5 +1,6 @@
 'use strict';
 
+/*
 var
 	config = require('../.invidia/config.js'),
 	envname = process.env.NODE_ENV,
@@ -8,7 +9,6 @@ var
 	modelFactory = require('../lib/model.js')
 ;
 
-/*
   ======== A Handy Little Nodeunit Reference ========
   https://github.com/caolan/nodeunit
 

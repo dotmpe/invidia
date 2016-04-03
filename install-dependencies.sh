@@ -6,37 +6,45 @@ test -z "$Build_Debug" || set -x
 
 test -n "$sudo" || sudo=
 
+test -n "$GIT_HOOK_NAMES" || GIT_HOOK_NAMES="apply-patch commit-msg post-update pre-applypatch pre-commit pre-push pre-rebase prepare-commit-msg update"
 
 
 generate_git_hooks()
 {
-	test -e "$package_pd_meta_git_hooks_pre_commit" || {
-		test -n "$package_pd_meta_git_hooks_pre_commit_script" || {
-			test -n "$package_pd_meta_check" && {
-				package_pd_meta_git_hooks_pre_commit_script="$package_pd_meta_check"
-			} || {
-				echo "No default git pre-commit script. "
-				return
-			}
-		}
+  # Create default script from pd-check
+  test -n "$package_pd_meta_git_hooks_pre_commit_script" || {
+    package_pd_meta_git_hooks_pre_commit_script="pd check $package_pd_meta_check"
+  }
 
-		mkdir -vp $(dirname $package_pd_meta_git_hooks_pre_commit)
-		echo "$package_pd_meta_git_hooks_pre_commit_script" \
-			>$package_pd_meta_git_hooks_pre_commit
-	}
+	for script in $GIT_HOOK_NAMES
+	do
+		t=$(eval echo \$package_pd_meta_git_hooks_$(echo $script|tr '-' '_'))
+		test -n "$t" || continue
+    test -e "$t" || {
+      s=$(eval echo \$package_pd_meta_git_hooks_$(echo $script|tr '-' '_')_script)
+      test -n "$s" || {
+        echo "No default git $script script. "
+        return
+      }
+
+      mkdir -vp $(dirname $t)
+      echo "$s" >$t
+      chmod +x $t
+      echo "Installed $script GIT commit hook"
+    }
+  done
 }
 
 install_git_hooks()
 {
-	for script in pre-commit
+	for script in $GIT_HOOK_NAMES
 	do
-		#t=script/git/$script.sh
 		t=$(eval echo \$package_pd_meta_git_hooks_$(echo $script|tr '-' '_'))
 		test -n "$t" || continue
 		l=.git/hooks/$script
 		test ! -e "$l" || {
 			test -h $l && {
-				test "$(readlink $l)" = "$t" || {
+				test "$(readlink $l)" = "../../$t" && continue || {
 					rm $l
 				}
 			} ||	{
@@ -93,4 +101,4 @@ test "$(basename $0)" = "install-dependencies.sh" && {
   main_entry $@ || exit $?
 }
 
-# Id: invidia/0.0.1 install-dependencies.sh
+# Id: invidia/0.0.1-dev install-dependencies.sh
