@@ -1,7 +1,8 @@
 Invidia
 =======
-:version: 0.0.1
-:description: 
+:Version: 0.0.1-dev
+:Created: 2014-06-28
+:description:
   Schema from (meta)data reverse engineering; specification, validation.
 
 :package:

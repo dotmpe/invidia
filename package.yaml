@@ -1,0 +1,20 @@
+
+
+- type: application/x-project-mpe
+  id: invidia
+  version: 0.0.1-dev # invidia
+  environments: [ 'development', 'testing' ]
+
+  pd-meta:
+    #test: grunt-test bats:invidia:sugarcrm-Contacts
+    test: make-test 
+    check: git-versioning
+
+    git-hooks:
+      pre-commit: ./script/scm/pre-commit.sh
+
+    init:
+      - ./install-dependencies.sh git
+      - npm install
+
+

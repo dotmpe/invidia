@@ -1,7 +1,7 @@
 {
   "name": "invidia",
   "description": "Schema from (meta)data reverse engineering",
-  "version": "0.0.1",
+  "version": "0.0.1-dev",
   "homepage": "https://github.com/dotmpe/invidia",
   "author": {
     "name": "B. van Berkum",

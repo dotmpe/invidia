@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// TODO replace minimist and setup for docopt
+/* TODO: replace minimist and setup for docopt */
 var usage = "\
 Usage: \
 	invidia.js --scan [ROOT]\
@@ -12,7 +12,7 @@ Options: \
 	--show-file  Try all scans on file and dump results to console. \
 ";
 
-var 
+var
 	//docopt = require('docopt'),
 	chalk = require('chalk'),
 	invidialib = require('../lib/'),
