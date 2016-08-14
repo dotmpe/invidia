@@ -2,3 +2,4 @@
 - `Design 2 <design-2.rst>`_
 - `Manual <manual-1.rst>`_
 - `Schema <schema.rst>`_
+- `Editor <editor.rst>`_
