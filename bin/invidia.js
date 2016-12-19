@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 /* TODO: replace minimist and setup for docopt */
-var usage = "\
-Usage: \
-	invidia.js --scan [ROOT]\
-	invidia.js --show-file FILE \
-	invidia.js --read-file FILE \
-Options: \
-	--help \
-	--scan       Run all available scans and update schema. \
-	--read-file  Load and dump file using matching reader. \
-	--show-file  Try all scans on file and dump results to console. \
-";
+var usage = ' \n\
+Usage: \n\
+	invidia.js --scan [ROOT] \n\
+	invidia.js --show-file FILE \n\
+	invidia.js --read-file FILE \n\
+Options: \n\
+	--help \n\
+	--scan       Run all available scans and update schema. \n\
+	--read-file  Load and dump file using matching reader. \n\
+	--show-file  Try all scans on file and dump results to console. \n\
+';
 
 var
 	//docopt = require('docopt'),
