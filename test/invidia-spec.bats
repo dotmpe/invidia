@@ -10,10 +10,15 @@ init
   test $status -eq 0
 }
 
-@test "${bin} --scan" {
+@test "${bin}" {
   run $BATS_TEST_DESCRIPTION
   test $status -eq 1
   fnmatch "*Nothing to do*" "${lines[*]}"
+}
+
+@test "${bin} --scan" {
+  run $BATS_TEST_DESCRIPTION
+  test $status -eq 0
 }
 
 
