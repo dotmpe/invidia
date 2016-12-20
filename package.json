@@ -33,13 +33,13 @@
     "docopt": "^0.4.0",
     "glob": "^4.0.2",
     "knex": "^0.7.3",
+    "lodash": "^4.17.2",
     "minimatch": "^1.0.0",
     "minimist": "^1.2.0",
     "mysql": "^2.6.1",
-    "path-extra": "^0.2.1",
+    "ospath": "^1.2.2",
     "sqlite3": "^3.0.5",
-    "tv4": "^1.1.9",
-    "underscore": "^1.6.0"
+    "tv4": "^1.1.9"
   },
   "devDependencies": {
     "coveralls": "^2.11.15",

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* TODO: replace minimist and setup for docopt */
+/* TODO: maybe replace minimist and setup for docopt */
 var usage = ' \n\
 Usage: \n\
 	invidia.js --scan [ROOT] \n\
@@ -14,12 +14,11 @@ Options: \n\
 
 var
 	//docopt = require('docopt'),
-	chalk = require('chalk'),
 	invidialib = require('../lib/'),
 	version = require("../package.json").version
 ;
 
-//docopt(usagel
+//docopt(usage)
 
 /* Get promises for config and extensions */
 invidialib.initConfig()
