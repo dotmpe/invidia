@@ -31,10 +31,10 @@ exports['invidia'] = {
   'test-1': function(test) {
     test.expect(2);
     // tests here
-    test.equal(invidia.version, pkg.verison);
+    test.equal(invidia.version, pkg.version);
     test.throws(function() {
-    	invidia.scanDir('nosuchdir');
-	});
+      invidia.scanDir('nosuchdir');
+  });
     test.done();
   },
 };

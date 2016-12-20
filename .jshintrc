@@ -11,6 +11,12 @@
   "unused": true,
   "boss": true,
   "eqnull": true,
-  "node": true
+  "node": true,
+  "predef": [
+    "requirejs",
+    "define",
+    "describe", "it", "before", "after"
+  ]
 }
-
+// vim:ft=javascript:
+// Id: invidia/0.0.2-dev

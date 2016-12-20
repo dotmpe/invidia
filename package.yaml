@@ -1,0 +1,28 @@
+# git-versioning main: invidia
+
+
+- type: application/x-project-mpe
+  id: invidia
+  version: 0.0.2-dev # invidia
+  environments: [ 'development', 'testing' ]
+
+  # Commands for testing source, checking source
+  test: grunt test
+  check: npm run check
+
+  # experimental projectdir metadata
+  pd-meta:
+    #test: grunt-test bats:invidia:sugarcrm-Contacts
+    check: git-versioning
+
+    # Initialize hooks even if it doesnt exist
+    git-hooks:
+      pre-commit: ./script/scm/pre-commit.sh
+
+    # post-checkout env update
+    init:
+      - npm install
+      - ./install-dependencies.sh git
+
+
+

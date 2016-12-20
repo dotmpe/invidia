@@ -2,11 +2,22 @@
 
 module.exports = function(grunt) {
 
-  // Project configuration.
   grunt.initConfig({
-    nodeunit: {
-      files: ['test/**/*_test.js'],
+
+    pkg: grunt.file.readJSON('package.json'),
+
+    exec: {
+      default_config: {
+        cmd: 'test -e .invidia/config.js && echo "Config exists: .invidia/config.js" || { mkdir .invidia; cp config.example.js .invidia/config.js; }'
+      },
+      version: {
+        cmd: "git-versioning check"
+      },
+      bats: {
+        cmd: "bats test/*-spec.bats"
+      }
     },
+
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -15,35 +26,50 @@ module.exports = function(grunt) {
         src: 'Gruntfile.js'
       },
       lib: {
-        src: ['lib/**/*.js']
+        src: [
+          'lib/**/*.js',
+        ]
       },
       test: {
-      	// TODO make it ignore mocha tests
-        src: ['test/**/*.js']
+        src: [ 'test/**/*.js' ]
       },
     },
-    watch: {
-      gruntfile: {
-        files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jshint:gruntfile']
-      },
-      lib: {
-        files: '<%= jshint.lib.src %>',
-        tasks: ['jshint:lib', 'nodeunit']
-      },
-      test: {
-        files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'nodeunit']
-      },
+
+    yamllint: {
+      all: {
+        src: [
+          'config/*.yaml',
+          'src/**/*.meta'
+        ]
+      }
     },
+
+    nodeunit: {
+      files: [
+        'test/**/*_test.js'
+      ],
+    },
+
   });
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  // auto load grunt contrib tasks from package.json
+  require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('test', ['nodeunit']);
-  grunt.registerTask('default', ['jshint', 'nodeunit']);
+  grunt.registerTask('lint', [
+    'jshint',
+    'yamllint'
+  ]);
+
+  grunt.registerTask('test', [
+    'exec:default_config',
+    'nodeunit',
+    'exec:bats'
+  ]);
+
+  grunt.registerTask('default', [
+    'lint',
+    'exec:version',
+    'test'
+  ]);
 
 };
