@@ -30,7 +30,7 @@
     "glob": "^7.1.1",
     "lodash": "^4.17.2",
     "nodelib": "https://github.com/dotmpe/nodelib.git#dev",
-    "minimist": "^3.0.3",
+    "minimist": "^1.2.0",
     "ospath": "^1.2.2"
   },
   "devDependencies": {
