@@ -66,6 +66,11 @@ module.exports = function(grunt) {
     'exec:bats'
   ]);
 
+  grunt.registerTask('test-travis', [
+    'exec:default_config',
+    'nodeunit',
+  ]);
+
   grunt.registerTask('default', [
     'lint',
     'exec:version',
